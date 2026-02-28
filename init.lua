@@ -229,8 +229,8 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 vim.keymap.set('n', '<C-s>', ':w<CR>', { desc = 'Save' })
 
 -- Toggle comment
-vim.keymap.set('n', '<leader>l', ':normal gcc<CR>', { desc = 'Toggle comment' })
-vim.keymap.set('v', '<leader>l', ":'<,'>normal gcc<CR>", { desc = 'Toggle comment' })
+vim.keymap.set('n', '<C-/>', ':normal gcc<CR>', { desc = 'Toggle comment' })
+vim.keymap.set('v', '<C-/>', ":'<,'>normal gcc<CR>", { desc = 'Toggle comment' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -852,18 +852,33 @@ require('lazy').setup({
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
       --  and try some other statusline plugin
-      local statusline = require 'mini.statusline'
+      -- local statusline = require 'mini.statusline'
       -- set use_icons to true if you have a Nerd Font
-      statusline.setup { use_icons = vim.g.have_nerd_font }
+      -- statusline.setup { use_icons = vim.g.have_nerd_font }
 
       -- You can configure sections in the statusline by overriding their
       -- default behavior. For example, here we set the section for
       -- cursor location to LINE:COLUMN
       ---@diagnostic disable-next-line: duplicate-set-field
-      statusline.section_location = function() return '%2l:%-2v' end
+      -- statusline.section_location = function() return '%2l:%-2v' end
 
       -- ... and there is more!
       --  Check out: https://github.com/nvim-mini/mini.nvim
+
+      -- Paren, bracket etc pairs
+      require('mini.pairs').setup()
+
+      -- Join and spread lists
+      -- - gS - toggle split
+      require('mini.splitjoin').setup()
+
+      -- Starter screen
+      local starter = require('mini.starter')
+      starter.setup {
+        items = {
+          starter.sections.recent_files(10, true),
+        },
+      }
     end,
   },
 
@@ -914,7 +929,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.neo-tree',
-  -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+  require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.

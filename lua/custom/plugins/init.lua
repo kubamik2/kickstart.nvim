@@ -33,9 +33,14 @@ return {
       require('toggleterm').setup {
         -- direction = 'float',
         -- float_opts = {
-          -- border = 'curved',
+        -- border = 'curved',
         -- },
       }
     end,
+  },
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function() require('lualine').setup {} end,
   },
 }
