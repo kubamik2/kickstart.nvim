@@ -171,6 +171,9 @@ vim.o.confirm = true
 -- disable line wrap
 vim.o.wrap = false
 
+-- rounded window border
+vim.o.winborder = 'rounded'
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -873,7 +876,7 @@ require('lazy').setup({
       require('mini.splitjoin').setup()
 
       -- Starter screen
-      local starter = require('mini.starter')
+      local starter = require 'mini.starter'
       starter.setup {
         items = {
           starter.sections.recent_files(10, true),
