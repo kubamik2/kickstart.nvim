@@ -22,7 +22,11 @@ return {
       local api = require 'nvim-tree.api'
       vim.keymap.set('n', '<leader>e', api.tree.toggle, { desc = 'Explorer' })
       vim.opt.termguicolors = true
-      require('nvim-tree').setup {}
+      require('nvim-tree').setup {
+        filters = {
+          git_ignored = false,
+        },
+      }
     end,
   },
   {
