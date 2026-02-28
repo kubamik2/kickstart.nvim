@@ -25,4 +25,17 @@ return {
       require('nvim-tree').setup {}
     end,
   },
+  {
+    'akinsho/toggleterm.nvim',
+    version = '*',
+    config = function()
+      vim.keymap.set({ 't', 'n' }, '<C-\\>', '<cmd>ToggleTerm<CR>', { desc = 'Toggle terminal' })
+      require('toggleterm').setup {
+        -- direction = 'float',
+        -- float_opts = {
+          -- border = 'curved',
+        -- },
+      }
+    end,
+  },
 }

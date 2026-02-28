@@ -225,6 +225,13 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
 
+-- Save file
+vim.keymap.set('n', '<C-s>', ':w<CR>', { desc = 'Save' })
+
+-- Toggle comment
+vim.keymap.set('n', '<leader>l', ':normal gcc<CR>', { desc = 'Toggle comment' })
+vim.keymap.set('v', '<leader>l', ":'<,'>normal gcc<CR>", { desc = 'Toggle comment' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -395,12 +402,17 @@ require('lazy').setup({
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
-        -- defaults = {
-        --   mappings = {
-        --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-        --   },
-        -- },
-        -- pickers = {}
+        defaults = {
+          mappings = {
+            i = { ['<c-d>'] = 'delete_buffer' },
+          },
+        },
+        pickers = {
+          buffers = {
+            show_all_buffers = true,
+            sort_mru = true,
+          },
+        },
         extensions = {
           ['ui-select'] = { require('telescope.themes').get_dropdown() },
         },
