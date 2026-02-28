@@ -5,4 +5,24 @@
 
 ---@module 'lazy'
 ---@type LazySpec
-return {}
+return {
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^8', -- Recommended
+    lazy = false, -- This plugin is already lazy
+  },
+  {
+    'nvim-tree/nvim-tree.lua',
+    version = '^1.15',
+    lazy = false,
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+    },
+    config = function()
+      local api = require 'nvim-tree.api'
+      vim.keymap.set('n', '<leader>e', api.tree.toggle, { desc = 'Explorer' })
+      vim.opt.termguicolors = true
+      require('nvim-tree').setup {}
+    end,
+  },
+}
