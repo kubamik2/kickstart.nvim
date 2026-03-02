@@ -10,6 +10,24 @@ return {
     'mrcjkb/rustaceanvim',
     version = '^8', -- Recommended
     lazy = false, -- This plugin is already lazy
+    config = function()
+      vim.g.rustaceanvim = {
+        server = {
+          default_settings = {
+            ['rust-analyzer'] = {
+              procMacro = {
+                enable = true,
+              },
+              cargo = {
+                buildScripts = {
+                  enable = true,
+                },
+              },
+            },
+          },
+        },
+      }
+    end,
   },
   {
     'nvim-tree/nvim-tree.lua',
@@ -25,6 +43,10 @@ return {
       require('nvim-tree').setup {
         filters = {
           git_ignored = false,
+        },
+        diagnostics = {
+          enable = true,
+          show_on_dirs = true
         },
       }
     end,
@@ -49,6 +71,7 @@ return {
       require('lualine').setup {
         options = {
           globalstatus = true,
+          path = 1,
         },
       }
     end,

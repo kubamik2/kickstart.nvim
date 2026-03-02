@@ -232,8 +232,10 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 vim.keymap.set('n', '<C-s>', ':w<CR>', { desc = 'Save' })
 
 -- Toggle comment
-vim.keymap.set('n', '<C-/>', ':normal gcc<CR>', { desc = 'Toggle comment' })
-vim.keymap.set('v', '<C-/>', ":'<,'>normal gcc<CR>", { desc = 'Toggle comment' })
+vim.keymap.set('n', '<C-_>', ':normal gcc<CR>', { desc = 'Toggle comment' })
+vim.keymap.set('v', '<C-_>', ":'<,'>normal gcc<CR>", { desc = 'Toggle comment' })
+
+vim.keymap.set('n', 'gl', vim.diagnostic.open_float, { desc = 'Show diagnostics under the cursor' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
