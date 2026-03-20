@@ -239,6 +239,8 @@ vim.keymap.set('n', '<C-s>', ':w<CR>', { desc = 'Save' })
 -- Toggle comment
 vim.keymap.set('n', '<C-_>', ':normal gcc<CR>', { desc = 'Toggle comment' })
 vim.keymap.set('v', '<C-_>', ":'<,'>normal gcc<CR>", { desc = 'Toggle comment' })
+vim.keymap.set('n', '<C-/>', ':normal gcc<CR>', { desc = 'Toggle comment' })
+vim.keymap.set('v', '<C-/>', ":'<,'>normal gcc<CR>", { desc = 'Toggle comment' })
 
 vim.keymap.set('n', 'gl', vim.diagnostic.open_float, { desc = 'Show diagnostics under the cursor' })
 
@@ -637,7 +639,15 @@ require('lazy').setup({
       local servers = {
         clangd = {},
         -- gopls = {},
-        -- pyright = {},
+        pyright = {},
+        erlangls = {
+          cmd = { 'erlang_ls' },
+          filetypes = { 'erlang' },
+        },
+        neocmakelsp = {
+          cmd = { 'neocmakelsp', 'stdio' },
+          filetypes = { 'cmake' },
+        },
         -- rust_analyzer = {},
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
